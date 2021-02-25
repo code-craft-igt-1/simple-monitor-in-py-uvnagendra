@@ -8,7 +8,7 @@ Electric Vehicles have BMS - Battery Management Systems
 
 [This site gives the optimum Charging-temperature limits](https://batteryuniversity.com/learn/article/charging_at_high_and_low_temperatures)
 
-[This abstract suggests a range for the optimum State of Charge](https://batteryuniversity.com/learn/article/charging_at_high_and_low_temperatures)
+[This abstract suggests a range for the optimum State of Charge](https://www.sciencedirect.com/science/article/pii/S2352484719310911)
 
 [Here is a reference for the maximum charge rate](https://www.electronics-notes.com/articles/electronic_components/battery-technology/li-ion-lithium-ion-charging.php#:~:text=Constant%20current%20charge:%20In%20the%20first%20stage%20of,rate%20of%20a%20maximum%20of%200.8C%20is%20recommended.)
 
@@ -17,11 +17,24 @@ Electric Vehicles have BMS - Battery Management Systems
 - Protect batteries while charging:
 at home, in public place, within vehicle / regenerative braking
 - Estimate life, inventory and supply chains
-- 
 
 ## The Starting Point
 
 We will explore the charging phase of Li-ion batteries to start with.
+
+## Issues
+
+- The code here has high complexity in a single function.
+- The tests are not complete - they do not cover all the needs of a consumer
+
+## Tasks
+
+1. Reduce the cyclomatic complexity.
+1. Avoid duplication - functions that do nearly the same thing
+1. Complete the tests - cover all conditions.
+1. To treat, we need to know the abnormal vital and the breach -
+whether high or low. Add this capability.
+1. Add the ability to plug-in different reporters to this code.
 
 ## The Exploration
 
