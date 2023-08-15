@@ -1,54 +1,44 @@
 # Programming Paradigms
 
-Electric Vehicles have BMS - Battery Management Systems
+Health Monitoring Systems
 
-[Here is an article that helps to understand the need for BMS](https://circuitdigest.com/article/battery-management-system-bms-for-electric-vehicles)
+[Here is an article that helps to understand the Adult Vital Signs](https://en.wikipedia.org/wiki/Vital_signs)
 
-[Wikipedia gives an idea of the types and topologies](https://en.wikipedia.org/wiki/Battery_management_system)
+[Here is a reference to Medical monitoring](https://en.wikipedia.org/wiki/Monitoring_(medicine))
 
-[This site gives the optimum Charging-temperature limits](https://batteryuniversity.com/learn/article/charging_at_high_and_low_temperatures)
+## Purpose
 
-[This abstract suggests a range for the optimum State of Charge](https://www.sciencedirect.com/science/article/pii/S2352484719310911)
+Continuous monitoring of vital signs, such as respiration and heartbeat, plays a crucial role in early detection and prediction of conditions that may affect the wellbeing of a patient. 
 
-[Here is a reference for the maximum charge rate](https://www.electronics-notes.com/articles/electronic_components/battery-technology/li-ion-lithium-ion-charging.php#:~:text=Constant%20current%20charge:%20In%20the%20first%20stage%20of,rate%20of%20a%20maximum%20of%200.8C%20is%20recommended.)
-
-## Possible purpose
-
-- Protect batteries while charging:
-at home, in public place, within vehicle / regenerative braking
-- Estimate life, inventory and supply chains
-
-## The Starting Point
-
-We will explore the charging phase of Li-ion batteries to start with.
+Monitoring requires accurate reading and thresholding of the vitals.
 
 ## Issues
 
 - The code here has high complexity in a single function.
+- The code is not modular 
 - The tests are not complete - they do not cover all the needs of a consumer
 
 ## Tasks
 
 1. Reduce the cyclomatic complexity.
+1. Separate pure functions from I/O
 1. Avoid duplication - functions that do nearly the same thing
-1. Complete the tests - cover all conditions.
-1. To treat, we need to know the abnormal vital and the breach -
-whether high or low. Add this capability.
-1. Add the ability to plug-in different reporters to this code.
+1. Complete the tests - cover all conditions. 
 
-## The Exploration
+## Self-evaluation
 
-How well does our code hold-out in the rapidly evolving EV space?
-Can we add new functionality without disturbing the old?
+How well does our code hold-out in the rapidly evolving [WHDS](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6111409/)
+Can we add future functionality without disturbing existing features? Can we do it with low effort and high reliability?
 
-## The Landscape
+## The future
 
-- Limits may change based on new research
-- Technology changes due to obsolescence
-- Sensors may be from different vendors with different accuracy
-- Predicting the future requires Astrology!
+- New vital might need to be monitored (ex: SPO2 during pandemic)
+- Vendor might provide additional vital reading (blood pressure)
+- Limits may change based on age of patient
 
-## Keep it Simple
+> Predicting the future requires Astrology!
+
+## Keep it simple
 
 Shorten the Semantic distance
 
