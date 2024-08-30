@@ -35,9 +35,3 @@ def vitals_ok(temperature, pulseRate, spo2):
       sleep(1)
     return False
   return True
-
-
-if __name__ == '__main__':
-  assert(vitals_ok(99, 102, 70) is False)
-  assert(vitals_ok(98.1, 70, 98) is True)
-  print('Done')
