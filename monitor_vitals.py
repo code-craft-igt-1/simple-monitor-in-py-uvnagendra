@@ -12,6 +12,7 @@ class Monitor_Vitals(MonitorVitalsUtil):
             if min_val <= temperature <= max_val:
                 message = self.get_temperature_message(temperature_key)
                 return self.translate_message(message, language)
+
         self.print_loading_message()
         message = self.get_temperature_message("CRITICAL")
         return self.translate_message(message, language)
