@@ -1,43 +1,35 @@
-from time import sleep
-import sys
+from monitor_vitals_util import *
 
-class Monitor_Vitals:
-  def is_temperature_ok(self, temperature):
-    if temperature in range(95, 102):
-      self.print_loading_message()
-      print('Temperature is normal')
-      return True
-    else:
-      self.print_loading_message()
-      print('Temperature critical!')
-      return False
+class Monitor_Vitals(MonitorVitalsUtil):  
+    def __init__(self):
+        super().__init__()
 
-  def is_pulse_rate_ok(self, pulseRate):
-    if pulseRate in range(60, 100):
-      self.print_loading_message()
-      print('Pulse Rate is normal')
-      return True
-    else:
-      self.print_loading_message()
-      print('Pulse Rate is out of range!')
-      return False
+    def check_temperature(self, temperature, unit='F', language='en'):
+        if unit == 'C':
+            temperature = self.celsius_to_fahrenheit(temperature)
 
-  def is_spo2_ok(self, spo2):
-    if spo2 < 90:
-      self.print_loading_message()
-      print('Oxygen level is normal')
-      return True
-    else:
-      self.print_loading_message()
-      print('Oxygen Saturation out of range!')
-      return False
+        for temperature_key, (min_val, max_val) in self.temp_range.items():
+            if min_val <= temperature <= max_val:
+                message = self.get_temperature_message(temperature_key)
+                return self.translate_message(message, language)
+        self.print_loading_message()
+        message = self.get_temperature_message("CRITICAL")
+        return self.translate_message(message, language)
 
-  def print_loading_message(self):
-    print('\rLoading', end='\n')
-    for i in range(6):
-      print('\r* ', end='')
-      sys.stdout.flush()
-      sleep(1)
-      print('\r *', end='')
-      sys.stdout.flush()
-      sleep(1)
+    def check_pulse_rate(self, pulseRate, language='en'):
+        for pulse_key, (min_val, max_val) in self.pulse_range.items():
+            if min_val <= pulseRate <= max_val:
+                message = self.get_pulse_rate_message(pulse_key)
+                return self.translate_message(message, language)
+        self.print_loading_message()
+        message = self.get_pulse_rate_message("CRITICAL")
+        return self.translate_message(message, language)
+
+    def check_spo2(self, spo2, language='en'):
+        for spo2_key, (min_val, max_val) in self.spo2_range.items():
+            if min_val <= spo2 <= max_val:
+                message = self.get_spo2_message(spo2_key)
+                return self.translate_message(message, language)
+        self.print_loading_message()
+        message = self.get_spo2_message("CRITICAL")
+        return self.translate_message(message, language)
