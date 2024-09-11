@@ -64,6 +64,11 @@ class MonitorVitalsUtil:
     def celsius_to_fahrenheit(self, celsius):
         return (celsius * 9/5) + 32
     
+    def return_critical_message(self, vital, language):
+        self.print_loading_message()
+        message = "{} is critical!".format(vital)
+        return self.translate_message(message, language)
+    
     def print_loading_message(self):
         print('\rLoading', end='\n')
         for i in range(6):
