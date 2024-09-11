@@ -5,9 +5,7 @@ class Monitor_Vitals(MonitorVitalsUtil):
         super().__init__()
 
     def check_temperature(self, temperature, unit='F', language='en'):
-        if unit == 'C':
-            temperature = self.celsius_to_fahrenheit(temperature)
-
+        temperature = self.check_temperature_unit(unit, temperature)
         for temperature_key, (min_val, max_val) in self.temp_range.items():
             if min_val <= temperature <= max_val:
                 message = self.get_temperature_message(temperature_key)

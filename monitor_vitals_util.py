@@ -61,8 +61,11 @@ class MonitorVitalsUtil:
         print(translated)
         return translated.text
         
-    def celsius_to_fahrenheit(self, celsius):
-        return (celsius * 9/5) + 32
+    def check_temperature_unit(self, unit, temp):
+        if unit == 'C':
+            return (temp * 9/5) + 32
+        else:
+            return temp
     
     def return_critical_message(self, vital, language):
         self.print_loading_message()
