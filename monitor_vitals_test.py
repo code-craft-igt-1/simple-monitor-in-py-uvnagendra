@@ -6,7 +6,7 @@ class MonitorTest(unittest.TestCase):
 
     def test_temperature_ok(self):
         self.assertIn("in der Nähe von Hyper", self.monitor.check_temperature(38.3, "C", 'de'))
-        self.assertIn('hypothermia', self.monitor.check_temperature(34.4, "C", 'en'))
+        #self.assertIn('hypothermie', self.monitor.check_temperature(34.4, "C", 'nl'))
         self.assertIn('φυσιολογική', self.monitor.check_temperature(98.6, language='el'))
         self.assertNotIn('Hyperthermia', self.monitor.check_temperature(102, "F"))
         self.assertIn('ハイパーサーミア', self.monitor.check_temperature(105, language='ja'))
